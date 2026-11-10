@@ -16,6 +16,8 @@ class MainMenu(QWidget):
         super().__init__()
         uic.loadUi('main_menu.ui', self)
 
+        self.game_window = None
+
         self.btn_play.clicked.connect(self.start_game)
         self.btn_settings.clicked.connect(self.settings)
         self.btn_exit.clicked.connect(self.exit)
@@ -23,7 +25,8 @@ class MainMenu(QWidget):
         self.settings_window = SettingsWindow()
 
     def start_game(self):
-        self.game_window = GameWindow()
+        if self.game_window is None:
+            self.game_window = GameWindow(self)
         self.game_window.show()
         self.hide()
 
