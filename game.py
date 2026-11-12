@@ -31,10 +31,15 @@ class GameWindow(QWidget):
         self.btn_human_3.clicked.connect(self.human)
         self.btn_human_4.clicked.connect(self.human)
 
-        self.btn_message_1.clicked.connect(self.message)
-        self.btn_message_2.clicked.connect(self.message)
-        self.btn_message_3.clicked.connect(self.message)
-        self.btn_message_4.clicked.connect(self.message)
+        self.btn_text_1.clicked.connect(self.message)
+        self.btn_text_2.clicked.connect(self.message)
+        self.btn_text_3.clicked.connect(self.message)
+        self.btn_text_4.clicked.connect(self.message)
+
+        self.btn_text_1.setVisible(False)
+        self.btn_text_2.setVisible(True)
+        self.btn_text_3.setVisible(False)
+        self.btn_text_4.setVisible(False)
 
         self.btn_pause.clicked.connect(self.confirm_exit)
 
@@ -69,5 +74,3 @@ class GameWindow(QWidget):
         self.statistic_window.show()
         self.statistic_window.raise_()
         self.statistic_window.activateWindow()
-
-    

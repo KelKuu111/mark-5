@@ -47,98 +47,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_human_1">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>80</y>
-     <width>180</width>
-     <height>240</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>180</width>
-     <height>240</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_human_2">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>80</y>
-     <width>180</width>
-     <height>240</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>180</width>
-     <height>240</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_human_3">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>360</y>
-     <width>180</width>
-     <height>240</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>180</width>
-     <height>240</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_human_4">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>360</y>
-     <width>180</width>
-     <height>240</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>180</width>
-     <height>240</height>
-    </size>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btn_pause">
    <property name="geometry">
     <rect>
@@ -168,119 +76,209 @@
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_message_1">
+  <widget class="QGroupBox" name="human_box">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>50</y>
-     <width>70</width>
-     <height>70</height>
+     <x>470</x>
+     <y>80</y>
+     <width>401</width>
+     <height>521</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton {
-    background: transparent;
-    border: none;
-}</string>
+    <string notr="true">QGroupBox { border: none; }</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+   <widget class="QPushButton" name="btn_human_1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>180</width>
+      <height>240</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>180</width>
+      <height>240</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_human_2">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>0</y>
+      <width>180</width>
+      <height>240</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>180</width>
+      <height>240</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_human_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>280</y>
+      <width>180</width>
+      <height>240</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>180</width>
+      <height>240</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_human_4">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>280</y>
+      <width>180</width>
+      <height>240</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>180</width>
+      <height>240</height>
+     </size>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_text_1">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>80</y>
+     <width>180</width>
+     <height>240</height>
+    </rect>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/message.png</normaloff>textures/message.png</iconset>
+     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>70</height>
+     <width>180</width>
+     <height>240</height>
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_message_2">
+  <widget class="QPushButton" name="btn_text_2">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>50</y>
-     <width>70</width>
-     <height>70</height>
+     <x>690</x>
+     <y>80</y>
+     <width>180</width>
+     <height>240</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    background: transparent;
-    border: none;
-}</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/message.png</normaloff>textures/message.png</iconset>
+     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>70</height>
+     <width>180</width>
+     <height>240</height>
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_message_3">
+  <widget class="QPushButton" name="btn_text_3">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>330</y>
-     <width>70</width>
-     <height>70</height>
+     <x>690</x>
+     <y>360</y>
+     <width>180</width>
+     <height>240</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    background: transparent;
-    border: none;
-}</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/message.png</normaloff>textures/message.png</iconset>
+     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>70</height>
+     <width>180</width>
+     <height>240</height>
     </size>
    </property>
   </widget>
-  <widget class="QPushButton" name="btn_message_4">
+  <widget class="QPushButton" name="btn_text_4">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>330</y>
-     <width>70</width>
-     <height>70</height>
+     <x>470</x>
+     <y>360</y>
+     <width>180</width>
+     <height>240</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    background: transparent;
-    border: none;
-}</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/message.png</normaloff>textures/message.png</iconset>
+     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>70</height>
+     <width>180</width>
+     <height>240</height>
     </size>
    </property>
   </widget>
