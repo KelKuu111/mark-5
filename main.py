@@ -40,9 +40,7 @@ class MainMenu(QWidget):
 
         if self.game_window is None:
             self.game_window = GameWindow(self, player_name=player_name)
-        else:
-            self.game_window.player_name = player_name
-            self.game_window.information()
+        self.game_window.player_name = player_name
         self.game_window.show()
         self.hide()
 

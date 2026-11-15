@@ -161,7 +161,6 @@ class GameWindow(QWidget):
         change = self.info_text
         change = change.replace('{name}', self.player_name)
         self.info_window.info_text.setText(change)
-        print(self.player_name)
 
         self.info_window.show()
         self.info_window.raise_()
