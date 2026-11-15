@@ -6,12 +6,15 @@ from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox, QPushButton
 with open('replicas.json', 'r', encoding='utf-8') as f:
     REPLICAS = json.load(f)
 
-CHARACTERS = {
-    "1": "Алексей Фролин",
-    "2": "Владислав Токомото",
-    "3": "Елизавета Филигранная",
-    "4": "Артём"
-}
+with open('characters.json', 'r', encoding='utf-8') as f:
+    CHARACTERS = json.load(f)
+
+# CHARACTERS = {
+#     "1": "Алексей Фролин",
+#     "2": "Владислав Токомото",
+#     "3": "Елизавета Филигранная",
+#     "4": "Артём"
+# }
 
 
 class HumanStatisticWindow(QDialog):
@@ -69,6 +72,8 @@ class GameWindow(QWidget):
         self.text_window.btn_ans_1.setVisible(False)
         self.text_window.btn_ans_2.setVisible(False)
 
+        self.text = self.statistic_window.about.text()
+
     def confirm_exit(self):
         reply = QMessageBox.question(
             self,
@@ -102,7 +107,7 @@ class GameWindow(QWidget):
         self.text_window.btn_ans_2.setVisible(False)
 
         self.text_window.setWindowTitle(f'Новое сообщение!')
-        self.text_window.msg_from.setText(f'От: {CHARACTERS[char_id]}')
+        self.text_window.msg_from.setText(f'От: {CHARACTERS[char_id]["name"]}')
         self.text_window.msg.setText(data["text"])
         self.text_window.show()
 
@@ -160,8 +165,23 @@ class GameWindow(QWidget):
         self.info_window.activateWindow()
 
     def human(self):
-        title = f'Статистика {CHARACTERS[self.sender().objectName()[-1]]}'
+        title = f'Статистика'
         self.statistic_window.setWindowTitle(title)
         self.statistic_window.show()
         self.statistic_window.raise_()
         self.statistic_window.activateWindow()
+
+        character = CHARACTERS[self.sender().objectName()[-1]]
+        
+        name = character["name"]
+        age = character["age"]
+        gender = character["gender"]
+        bonus = character["bonus"]
+
+        self.statistic_window.from_who.setText(name)
+
+        changes = self.text
+        changes = changes.replace('age', age)
+        changes = changes.replace('gender', gender)
+        changes = changes.replace('bonus', bonus)
+        self.statistic_window.about.setText(changes)

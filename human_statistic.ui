@@ -63,7 +63,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Возраст: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;35 &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Пол: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;мужской&lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Командир группы, следит за порядком, отдает приказы.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Возраст: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; age &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Пол: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; gender &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt; bonus &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="scaledContents">
     <bool>false</bool>
@@ -78,7 +78,7 @@
     <number>-1</number>
    </property>
   </widget>
-  <widget class="QLabel" name="msg_from">
+  <widget class="QLabel" name="from_who">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -120,7 +120,7 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="pulse">
+  <widget class="QLabel" name="health">
    <property name="geometry">
     <rect>
      <x>10</x>
