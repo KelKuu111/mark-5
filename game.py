@@ -14,6 +14,9 @@ with open('characters.json', 'r', encoding='utf-8') as f:
 with open('health.json', 'r', encoding='utf-8') as f:
     HEALTH_STAGES = json.load(f)
 
+with open('tasks.json', 'r', encoding='utf-8') as f:
+    TASKS = json.load(f)
+
 
 class HumanStatisticWindow(QDialog):
     def __init__(self, parent=None):
@@ -76,6 +79,8 @@ class GameWindow(QWidget):
         self.health = {}
         self.apply_health_stages()
 
+        self.update_tasks()
+
         self.information()
 
     def confirm_exit(self):
@@ -133,6 +138,7 @@ class GameWindow(QWidget):
             self.stage = next_stage
             self.show_buttons_for_stage()
             self.apply_health_stages()
+            self.update_tasks()
 
             ###########################################
             self.current_stage.setText(self.stage)
@@ -143,6 +149,7 @@ class GameWindow(QWidget):
             self.stage = str(int(self.stage) + 1)
             self.show_buttons_for_stage()
             self.apply_health_stages()
+            self.update_tasks()
 
         ###########################################
         self.current_stage.setText(self.stage)
@@ -219,3 +226,7 @@ class GameWindow(QWidget):
             if idx not in self.health:
                 self.health[idx] = {}
             self.health[idx].update(changes)
+
+    def update_tasks(self):
+        task = TASKS.get(self.stage, {})
+        self.current_tasks_label.setText('\n'.join(task.get("tasks", "-")))
