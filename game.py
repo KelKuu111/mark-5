@@ -1,10 +1,17 @@
 import json
 from PyQt6 import uic
-from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
+from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox, QPushButton
 
 
 with open('replicas.json', 'r', encoding='utf-8') as f:
     REPLICAS = json.load(f)
+
+CHARACTERS = {
+    "1": "Алексей Фролин",
+    "2": "Владислав Токомото",
+    "3": "Елизавета Филигранная",
+    "4": "Артём"
+}
 
 
 class HumanStatisticWindow(QDialog):
@@ -19,18 +26,30 @@ class TextWindow(QDialog):
         uic.loadUi('text_window.ui', self)
 
 
+class InfoWindow(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        uic.loadUi('info_window.ui', self)
+
+
 class GameWindow(QWidget):
     def __init__(self, main_window=None):
         super().__init__()
         uic.loadUi('game_window.ui', self)
         print('Игра запущена!')
 
-        self.stage = 1
+        self.stage = "1"
+        ###########################################
+        self.current_stage.setText(self.stage)
+        ###########################################
         
         self.main_menu = main_window
 
         self.statistic_window = HumanStatisticWindow(self)
         self.text_window = TextWindow(self)
+        self.info_window = InfoWindow(self)
+
+        self.information()
 
         self.btn_human_1.clicked.connect(self.human)
         self.btn_human_2.clicked.connect(self.human)
@@ -42,12 +61,13 @@ class GameWindow(QWidget):
         self.btn_text_3.clicked.connect(self.message)
         self.btn_text_4.clicked.connect(self.message)
 
-        self.btn_text_1.setVisible(True)
-        self.btn_text_2.setVisible(False)
-        self.btn_text_3.setVisible(True)
-        self.btn_text_4.setVisible(False)
-
         self.btn_pause.clicked.connect(self.confirm_exit)
+        self.btn_info.clicked.connect(self.information)
+
+        self.text_window.btn_ans_1.clicked.connect(self.on_choice)
+        self.text_window.btn_ans_2.clicked.connect(self.on_choice)
+        self.text_window.btn_ans_1.setVisible(False)
+        self.text_window.btn_ans_2.setVisible(False)
 
     def confirm_exit(self):
         reply = QMessageBox.question(
@@ -73,36 +93,75 @@ class GameWindow(QWidget):
         btn = self.sender()
         char_id = btn.objectName()[-1]
 
-        stage_data = REPLICAS.get(str(self.stage), {})
+        stage_data = REPLICAS.get(self.stage, {})
         data = stage_data.get(char_id)
         if data is None:
             return
 
+        self.text_window.btn_ans_1.setVisible(False)
+        self.text_window.btn_ans_2.setVisible(False)
+
         self.text_window.setWindowTitle(f'Новое сообщение!')
-        self.text_window.msg_from.setText(f'Сообщение от {char_id}')
+        self.text_window.msg_from.setText(f'От: {CHARACTERS[char_id]}')
         self.text_window.msg.setText(data["text"])
         self.text_window.show()
-        btn.hide()
 
-        self.update_stage()
+        if data.get("choices") is not None:
+            self.text_window.btn_ans_1.setText(data["choices"][0]["text"])
+            self.text_window.btn_ans_2.setText(data["choices"][1]["text"])
+            self.text_window.btn_ans_1.setVisible(True)
+            self.text_window.btn_ans_2.setVisible(True)
+            self.current_msg_btn = [btn, data]
+        else:
+            btn.hide()
+            self.update_stage()
+
+    def update_stage(self, next_stage=None):
+        any_visible = any(
+            getattr(self, f'btn_text_{i}').isVisible() for i in range(1, 5)
+        )
+        if next_stage:
+            self.stage = next_stage
+            self.show_buttons_for_stage()
+
+            ###########################################
+            self.current_stage.setText(self.stage)
+            ###########################################
+            
+            return
+        if not any_visible:
+            self.stage = str(int(self.stage) + 1)
+            self.show_buttons_for_stage()
+
+        ###########################################
+        self.current_stage.setText(self.stage)
+        ###########################################
+
+    def on_choice(self):
+        self.text_window.btn_ans_1.setVisible(False)
+        self.text_window.btn_ans_2.setVisible(False)
+
+        btn_idx = int(self.sender().objectName()[-1]) - 1
+        self.current_msg_btn[0].hide()
+        next_stage = self.current_msg_btn[1]["choices"][btn_idx].get("next")
+        self.text_window.close()
+        self.update_stage(next_stage)
+
+    def show_buttons_for_stage(self):
+        stage_data = REPLICAS.get(self.stage, {})
+        for i in range(1, 5):
+            btn = getattr(self, f"btn_text_{i}")
+            btn.setVisible(str(i) in stage_data)
+
+    def information(self):
+        self.info_window.setWindowTitle('Основная информация')
+        self.info_window.show()
+        self.info_window.raise_()
+        self.info_window.activateWindow()
 
     def human(self):
-        title = f'Статистика {self.sender().objectName()[-1]}'
+        title = f'Статистика {CHARACTERS[self.sender().objectName()[-1]]}'
         self.statistic_window.setWindowTitle(title)
         self.statistic_window.show()
         self.statistic_window.raise_()
         self.statistic_window.activateWindow()
-
-    def update_stage(self):
-        any_visible = any(
-            getattr(self, f'btn_text_{i}').isVisible() for i in range(1, 5)
-        )
-        if not any_visible:
-            self.stage += 1
-            self.show_buttons_for_stage()
-
-    def show_buttons_for_stage(self):
-        stage_data = REPLICAS.get(str(self.stage), {})
-        for i in range(1, 5):
-            btn = getattr(self, f"btn_text_{i}")
-            btn.setVisible(str(i) in stage_data)
