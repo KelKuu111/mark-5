@@ -1,20 +1,15 @@
 import json
 from PyQt6 import uic
-from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox, QPushButton
+from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
 
+
+player_name = ''
 
 with open('replicas.json', 'r', encoding='utf-8') as f:
     REPLICAS = json.load(f)
 
 with open('characters.json', 'r', encoding='utf-8') as f:
     CHARACTERS = json.load(f)
-
-# CHARACTERS = {
-#     "1": "Алексей Фролин",
-#     "2": "Владислав Токомото",
-#     "3": "Елизавета Филигранная",
-#     "4": "Артём"
-# }
 
 
 class HumanStatisticWindow(QDialog):
@@ -36,11 +31,12 @@ class InfoWindow(QDialog):
 
 
 class GameWindow(QWidget):
-    def __init__(self, main_window=None):
+    def __init__(self, main_window=None, player_name=""):
         super().__init__()
         uic.loadUi('game_window.ui', self)
         print('Игра запущена!')
 
+        self.player_name = player_name
         self.stage = "1"
         ###########################################
         self.current_stage.setText(self.stage)
@@ -51,8 +47,6 @@ class GameWindow(QWidget):
         self.statistic_window = HumanStatisticWindow(self)
         self.text_window = TextWindow(self)
         self.info_window = InfoWindow(self)
-
-        self.information()
 
         self.btn_human_1.clicked.connect(self.human)
         self.btn_human_2.clicked.connect(self.human)
@@ -73,6 +67,9 @@ class GameWindow(QWidget):
         self.text_window.btn_ans_2.setVisible(False)
 
         self.text = self.statistic_window.about.text()
+        self.info_text = self.info_window.info_text.text()
+
+        self.information()
 
     def confirm_exit(self):
         reply = QMessageBox.question(
@@ -84,9 +81,9 @@ class GameWindow(QWidget):
         )
 
         if reply == QMessageBox.StandardButton.Yes:
+            self.main_menu.show()
             self.hide()
             self.close_dialogs()
-            self.main_menu.show()
 
     def close_dialogs(self):
         if self.text_window.isVisible():
@@ -160,6 +157,12 @@ class GameWindow(QWidget):
 
     def information(self):
         self.info_window.setWindowTitle('Основная информация')
+
+        change = self.info_text
+        change = change.replace('{name}', self.player_name)
+        self.info_window.info_text.setText(change)
+        print(self.player_name)
+
         self.info_window.show()
         self.info_window.raise_()
         self.info_window.activateWindow()
@@ -181,7 +184,7 @@ class GameWindow(QWidget):
         self.statistic_window.from_who.setText(name)
 
         changes = self.text
-        changes = changes.replace('age', age)
-        changes = changes.replace('gender', gender)
-        changes = changes.replace('bonus', bonus)
+        changes = changes.replace('{age}', age)
+        changes = changes.replace('{gender}', gender)
+        changes = changes.replace('{bonus}', bonus)
         self.statistic_window.about.setText(changes)

@@ -63,7 +63,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Возраст: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; age &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Пол: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; gender &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt; bonus &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Возраст: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; {age} &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Пол: &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt; {gender} &lt;br/&gt;&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt; {bonus} &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="scaledContents">
     <bool>false</bool>

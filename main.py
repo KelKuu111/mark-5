@@ -1,6 +1,6 @@
 import sys
 from PyQt6 import uic
-from PyQt6.QtWidgets import QWidget, QApplication, QGraphicsOpacityEffect
+from PyQt6.QtWidgets import QWidget, QApplication, QMessageBox
 from game import GameWindow
 
 
@@ -25,8 +25,24 @@ class MainMenu(QWidget):
         self.settings_window = SettingsWindow()
 
     def start_game(self):
+        player_name = self.settings_window.edit_name.text()
+
+        if not player_name:
+            QMessageBox.warning(
+                self,
+                "Имя не введено",
+                "Пожалуйста, введите имя персонажа в настройках, "
+                "прежде чем начинать игру."
+            )
+            self.settings()
+            self.settings_window.edit_name.setFocus()
+            return
+
         if self.game_window is None:
-            self.game_window = GameWindow(self)
+            self.game_window = GameWindow(self, player_name=player_name)
+        else:
+            self.game_window.player_name = player_name
+            self.game_window.information()
         self.game_window.show()
         self.hide()
 
