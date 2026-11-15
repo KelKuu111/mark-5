@@ -11,6 +11,9 @@ with open('replicas.json', 'r', encoding='utf-8') as f:
 with open('characters.json', 'r', encoding='utf-8') as f:
     CHARACTERS = json.load(f)
 
+with open('health.json', 'r', encoding='utf-8') as f:
+    HEALTH_STAGES = json.load(f)
+
 
 class HumanStatisticWindow(QDialog):
     def __init__(self, parent=None):
@@ -66,8 +69,12 @@ class GameWindow(QWidget):
         self.text_window.btn_ans_1.setVisible(False)
         self.text_window.btn_ans_2.setVisible(False)
 
-        self.text = self.statistic_window.about.text()
+        self.about_text = self.statistic_window.about.text()
+        self.health_text = self.statistic_window.health.text()
         self.info_text = self.info_window.info_text.text()
+
+        self.health = {}
+        self.apply_health_stages()
 
         self.information()
 
@@ -125,6 +132,7 @@ class GameWindow(QWidget):
         if next_stage:
             self.stage = next_stage
             self.show_buttons_for_stage()
+            self.apply_health_stages()
 
             ###########################################
             self.current_stage.setText(self.stage)
@@ -134,6 +142,7 @@ class GameWindow(QWidget):
         if not any_visible:
             self.stage = str(int(self.stage) + 1)
             self.show_buttons_for_stage()
+            self.apply_health_stages()
 
         ###########################################
         self.current_stage.setText(self.stage)
@@ -173,8 +182,11 @@ class GameWindow(QWidget):
         self.statistic_window.raise_()
         self.statistic_window.activateWindow()
 
-        character = CHARACTERS[self.sender().objectName()[-1]]
-        
+        char_id = self.sender().objectName()[-1]
+
+        # Основная Информация
+        character = CHARACTERS[char_id]
+
         name = character["name"]
         age = character["age"]
         gender = character["gender"]
@@ -182,8 +194,28 @@ class GameWindow(QWidget):
 
         self.statistic_window.from_who.setText(name)
 
-        changes = self.text
+        changes = self.about_text
         changes = changes.replace('{age}', age)
         changes = changes.replace('{gender}', gender)
         changes = changes.replace('{bonus}', bonus)
         self.statistic_window.about.setText(changes)
+
+        # Здоровье
+        health = self.health.get(char_id, {})
+
+        pulse = health.get("pulse", "-")
+        pressure = health.get("pressure", "-")
+        state = health.get("state", "-")
+
+        changes = self.health_text
+        changes = changes.replace('{pulse}', pulse)
+        changes = changes.replace('{pressure}', pressure)
+        changes = changes.replace('{state}', state)
+        self.statistic_window.health.setText(changes)
+
+    def apply_health_stages(self):
+        change = HEALTH_STAGES.get(self.stage, {})
+        for idx, changes in change.items():
+            if idx not in self.health:
+                self.health[idx] = {}
+            self.health[idx].update(changes)
