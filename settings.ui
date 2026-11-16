@@ -71,7 +71,7 @@
     <string notr="true">font: bold; color: black;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>Календарь</string>
    </property>
   </widget>
   <widget class="QLabel" name="question">

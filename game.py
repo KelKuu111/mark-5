@@ -47,6 +47,7 @@ class GameWindow(QWidget):
 
         self.player_name = player_name
         self.stage = "1"
+        self.current_human_id = None
         ###########################################
         self.current_stage.setText(self.stage)
         ###########################################
@@ -148,6 +149,7 @@ class GameWindow(QWidget):
             self.apply_health_stages()
             self.update_tasks()
             self.update_deep()
+            self.refresh_human()
 
             ###########################################
             self.current_stage.setText(self.stage)
@@ -160,6 +162,7 @@ class GameWindow(QWidget):
             self.apply_health_stages()
             self.update_tasks()
             self.update_deep()
+            self.refresh_human()
 
         ###########################################
         self.current_stage.setText(self.stage)
@@ -193,25 +196,25 @@ class GameWindow(QWidget):
         self.info_window.activateWindow()
 
     def human(self):
-        title = f'Статистика'
-        self.statistic_window.setWindowTitle(title)
+        char_id = self.sender().objectName()[-1]
+        self.current_human_id = char_id
+
+        self.statistic_window.setWindowTitle('Статистика')
+        self.fill_human(char_id)
         self.statistic_window.show()
         self.statistic_window.raise_()
         self.statistic_window.activateWindow()
 
-        char_id = self.sender().objectName()[-1]
-
+    def fill_human(self, char_id):
         # Основная Информация
         character = CHARACTERS[char_id]
+        self.statistic_window.from_who.setText(character["name"])
 
-        name = character["name"]
+        changes = self.about_text
         age = character["age"]
         gender = character["gender"]
         bonus = character["bonus"]
 
-        self.statistic_window.from_who.setText(name)
-
-        changes = self.about_text
         changes = changes.replace('{age}', age)
         changes = changes.replace('{gender}', gender)
         changes = changes.replace('{bonus}', bonus)
@@ -219,16 +222,16 @@ class GameWindow(QWidget):
 
         # Здоровье
         health = self.health.get(char_id, {})
-
-        pulse = health.get("pulse", "-")
-        pressure = health.get("pressure", "-")
-        state = health.get("state", "-")
-
         changes = self.health_text
-        changes = changes.replace('{pulse}', pulse)
-        changes = changes.replace('{pressure}', pressure)
-        changes = changes.replace('{state}', state)
+
+        changes = changes.replace('{pulse}', health.get("pulse", "-"))
+        changes = changes.replace('{pressure}', health.get("pressure", "-"))
+        changes = changes.replace('{state}', health.get("state", "-"))
         self.statistic_window.health.setText(changes)
+
+    def refresh_human(self):
+        if self.current_human_id and self.statistic_window.isVisible():
+            self.fill_human(self.current_human_id)
 
     def apply_health_stages(self):
         change = HEALTH_STAGES.get(self.stage, {})
