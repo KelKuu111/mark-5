@@ -17,6 +17,9 @@ with open('health.json', 'r', encoding='utf-8') as f:
 with open('tasks.json', 'r', encoding='utf-8') as f:
     TASKS = json.load(f)
 
+with open('deep.json', 'r', encoding='utf-8') as f:
+    DEEP = json.load(f)
+
 
 class HumanStatisticWindow(QDialog):
     def __init__(self, parent=None):
@@ -53,6 +56,8 @@ class GameWindow(QWidget):
         self.statistic_window = HumanStatisticWindow(self)
         self.text_window = TextWindow(self)
         self.info_window = InfoWindow(self)
+
+        self.btn_deep.clicked.connect(self.deep)
 
         self.btn_human_1.clicked.connect(self.human)
         self.btn_human_2.clicked.connect(self.human)
@@ -97,6 +102,9 @@ class GameWindow(QWidget):
             self.hide()
             self.close_dialogs()
 
+    def deep(self):
+        print('Измеряем глубину!')
+
     def close_dialogs(self):
         if self.text_window.isVisible():
             self.text_window.close()
@@ -139,6 +147,7 @@ class GameWindow(QWidget):
             self.show_buttons_for_stage()
             self.apply_health_stages()
             self.update_tasks()
+            self.update_deep()
 
             ###########################################
             self.current_stage.setText(self.stage)
@@ -150,6 +159,7 @@ class GameWindow(QWidget):
             self.show_buttons_for_stage()
             self.apply_health_stages()
             self.update_tasks()
+            self.update_deep()
 
         ###########################################
         self.current_stage.setText(self.stage)
@@ -230,3 +240,15 @@ class GameWindow(QWidget):
     def update_tasks(self):
         task = TASKS.get(self.stage, {})
         self.current_tasks_label.setText('\n'.join(task.get("tasks", "-")))
+
+    def update_deep(self):
+        current_deep = DEEP.get(self.stage, None)
+        if current_deep is None:
+            return
+
+        for idx in current_deep:
+            current = getattr(self, f'deep_{idx}')
+            g = current.geometry()
+            x, y, w, h = g.x(), g.y(), g.width(), g.height()
+            y = 120 + current_deep[idx] // 2
+            current.setGeometry(x, y, w, h)
