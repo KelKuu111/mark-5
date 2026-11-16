@@ -7,14 +7,14 @@ from game import GameWindow
 class SettingsWindow(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('settings.ui', self)
+        uic.loadUi('ui/settings.ui', self)
         self.btn_settings_exit.clicked.connect(self.hide)
 
 
 class MainMenu(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_menu.ui', self)
+        uic.loadUi('ui/main_menu.ui', self)
 
         self.game_window = None
 

@@ -5,44 +5,44 @@ from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
 
 player_name = ''
 
-with open('replicas.json', 'r', encoding='utf-8') as f:
+with open('json/replicas.json', 'r', encoding='utf-8') as f:
     REPLICAS = json.load(f)
 
-with open('characters.json', 'r', encoding='utf-8') as f:
+with open('json/characters.json', 'r', encoding='utf-8') as f:
     CHARACTERS = json.load(f)
 
-with open('health.json', 'r', encoding='utf-8') as f:
+with open('json/health.json', 'r', encoding='utf-8') as f:
     HEALTH_STAGES = json.load(f)
 
-with open('tasks.json', 'r', encoding='utf-8') as f:
+with open('json/tasks.json', 'r', encoding='utf-8') as f:
     TASKS = json.load(f)
 
-with open('deep.json', 'r', encoding='utf-8') as f:
+with open('json/deep.json', 'r', encoding='utf-8') as f:
     DEEP = json.load(f)
 
 
 class HumanStatisticWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        uic.loadUi('human_statistic.ui', self)
+        uic.loadUi('ui/human_statistic.ui', self)
 
 
 class TextWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        uic.loadUi('text_window.ui', self)
+        uic.loadUi('ui/text_window.ui', self)
 
 
 class InfoWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        uic.loadUi('info_window.ui', self)
+        uic.loadUi('ui/info_window.ui', self)
 
 
 class GameWindow(QWidget):
     def __init__(self, main_window=None, player_name=""):
         super().__init__()
-        uic.loadUi('game_window.ui', self)
+        uic.loadUi('ui/game_window.ui', self)
         print('Игра запущена!')
 
         self.player_name = player_name
