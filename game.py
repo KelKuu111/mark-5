@@ -46,6 +46,7 @@ class GameWindow(QWidget):
         self.player_name = player_name
         self.stage = "1"
         self.current_human_id = None
+        self.pulse = {'1': 73, '2': 68, '3': 80, '4': 90}
         ###########################################
         self.current_stage.setText(self.stage)
         ###########################################
@@ -151,6 +152,9 @@ class GameWindow(QWidget):
             self.current_stage.setText(self.stage)
             ###########################################
             
+            if REPLICAS.get(self.stage, {}).get("SKIP"):
+                self.update_stage(REPLICAS[self.stage]["SKIP"])
+
             return
         if not any_visible:
             self.stage = str(int(self.stage) + 1)
@@ -163,6 +167,9 @@ class GameWindow(QWidget):
         ###########################################
         self.current_stage.setText(self.stage)
         ###########################################
+
+        if REPLICAS.get(self.stage, {}).get("SKIP"):
+            self.update_stage()
 
     def on_choice(self):
         self.text_window.btn_ans_1.setVisible(False)
@@ -220,7 +227,9 @@ class GameWindow(QWidget):
         health = self.health.get(char_id, {})
         changes = self.health_text
 
-        changes = changes.replace('{pulse}', health.get("pulse", "-"))
+        self.pulse[char_id] += int(health.get("pulse", 0))
+
+        changes = changes.replace('{pulse}', str(self.pulse[char_id]))
         changes = changes.replace('{pressure}', health.get("pressure", "-"))
         changes = changes.replace('{state}', health.get("state", "-"))
         self.statistic_window.health.setText(changes)
