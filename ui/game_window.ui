@@ -320,6 +320,9 @@
      <height>61</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>TextLabel</string>
    </property>
@@ -379,6 +382,9 @@
      <family>Courier New</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
    </property>
    <property name="text">
     <string>Текущие задачи:</string>

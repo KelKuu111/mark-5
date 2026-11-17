@@ -41,7 +41,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color: white</string>
    </property>
    <property name="text">
     <string>Сохранить и выйти</string>

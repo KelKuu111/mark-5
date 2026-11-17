@@ -112,6 +112,9 @@
      <hintingpreference>PreferDefaultHinting</hintingpreference>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: white</string>
+   </property>
    <property name="text">
     <string>Отметка минус пять</string>
    </property>

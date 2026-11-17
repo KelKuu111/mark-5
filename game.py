@@ -3,8 +3,6 @@ from PyQt6 import uic
 from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
 
 
-player_name = ''
-
 with open('json/replicas.json', 'r', encoding='utf-8') as f:
     REPLICAS = json.load(f)
 
@@ -84,9 +82,7 @@ class GameWindow(QWidget):
 
         self.health = {}
         self.apply_health_stages()
-
         self.update_tasks()
-
         self.information()
 
     def confirm_exit(self):
