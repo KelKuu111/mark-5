@@ -148,6 +148,7 @@ class GameWindow(QWidget):
             self.apply_health_stages()
             self.update_tasks()
             self.update_deep()
+            self.update_pulse()
             self.refresh_human()
 
             ###########################################
@@ -164,6 +165,7 @@ class GameWindow(QWidget):
             self.apply_health_stages()
             self.update_tasks()
             self.update_deep()
+            self.update_pulse()
             self.refresh_human()
 
         ###########################################
@@ -229,8 +231,6 @@ class GameWindow(QWidget):
         health = self.health.get(char_id, {})
         changes = self.health_text
 
-        self.pulse[char_id] += int(health.get("pulse", 0))
-
         for state in STATES:
             if self.pulse[char_id] < STATES[state]:
                 changes = changes.replace('{state}', state)
@@ -250,6 +250,10 @@ class GameWindow(QWidget):
             if idx not in self.health:
                 self.health[idx] = {}
             self.health[idx].update(changes)
+
+    def update_pulse(self):
+        for char_id in HEALTH_STAGES.get(self.stage, {}):
+            self.pulse[char_id] += int(HEALTH_STAGES[self.stage][char_id]['pulse'])
 
     def update_tasks(self):
         task = TASKS.get(self.stage, {})
