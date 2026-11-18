@@ -156,7 +156,7 @@ class GameWindow(QWidget):
             ###########################################
             
             if REPLICAS.get(self.stage, {}).get("SKIP"):
-                self.update_stage(REPLICAS[self.stage]["SKIP"])
+                return self.update_stage(REPLICAS[self.stage]["SKIP"])
 
             return
         if not any_visible:
@@ -173,7 +173,7 @@ class GameWindow(QWidget):
         ###########################################
 
         if REPLICAS.get(self.stage, {}).get("SKIP"):
-            self.update_stage()
+            return self.update_stage()
 
     def on_choice(self):
         self.text_window.btn_ans_1.setVisible(False)
