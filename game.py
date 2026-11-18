@@ -18,6 +18,8 @@ with open('json/tasks.json', 'r', encoding='utf-8') as f:
 with open('json/deep.json', 'r', encoding='utf-8') as f:
     DEEP = json.load(f)
 
+STATES = {'Спокоен': 80, 'Напряжён': 90, 'Встревожен': 110, 'Охвачен паникой': 140, 'Объятый паникой': 150}
+
 
 class HumanStatisticWindow(QDialog):
     def __init__(self, parent=None):
@@ -229,9 +231,13 @@ class GameWindow(QWidget):
 
         self.pulse[char_id] += int(health.get("pulse", 0))
 
+        for state in STATES:
+            if self.pulse[char_id] < STATES[state]:
+                changes = changes.replace('{state}', state)
+                break
+
         changes = changes.replace('{pulse}', str(self.pulse[char_id]))
         changes = changes.replace('{pressure}', health.get("pressure", "-"))
-        changes = changes.replace('{state}', health.get("state", "-"))
         self.statistic_window.health.setText(changes)
 
     def refresh_human(self):

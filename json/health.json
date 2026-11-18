@@ -1,70 +1,70 @@
 {
     "1": {
-        "1": {"pulse": "0", "pressure": "112кПа", "state": "спокоен"},
-        "2": {"pulse": "0", "pressure": "118кПа", "state": "спокоен"},
-        "3": {"pulse": "0", "pressure": "120кПа", "state": "спокоен"},
-        "4": {"pulse": "0", "pressure": "130кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "112кПа"},
+        "2": {"pulse": "0", "pressure": "118кПа"},
+        "3": {"pulse": "0", "pressure": "120кПа"},
+        "4": {"pulse": "0", "pressure": "130кПа"}
     },
     "2": {
-        "1": {"pulse": "0", "pressure": "112кПа", "state": "спокоен"},
-        "4": {"pulse": "0", "pressure": "130кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "112кПа"},
+        "4": {"pulse": "0", "pressure": "130кПа"}
     },
     "3": {
-        "1": {"pulse": "0", "pressure": "114кПа", "state": "спокоен"},
-        "2": {"pulse": "1", "pressure": "120кПа", "state": "обеспокоен"},
-        "3": {"pulse": "0", "pressure": "122кПа", "state": "спокоен"},
-        "4": {"pulse": "0", "pressure": "132кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "114кПа"},
+        "2": {"pulse": "1", "pressure": "120кПа"},
+        "3": {"pulse": "0", "pressure": "122кПа"},
+        "4": {"pulse": "0", "pressure": "132кПа"}
     },
 
-    "3W": {"2": {"pulse": "-2", "pressure": "120кПа", "state": "обеспокоен"}},
-    "3L": {"2": {"pulse": "2", "pressure": "120кПа", "state": "обеспокоен"}},
+    "3W": {"2": {"pulse": "-2", "pressure": "120кПа"}},
+    "3L": {"2": {"pulse": "2", "pressure": "120кПа"}},
 
     "4": {
-        "1": {"pulse": "1", "pressure": "115кПа", "state": "смущен"},
-        "2": {"pulse": "0", "pressure": "121кПа", "state": "обеспокоен"},
-        "3": {"pulse": "0", "pressure": "123кПа", "state": "спокоен"},
-        "4": {"pulse": "0", "pressure": "133кПа", "state": "напряжён"}
+        "1": {"pulse": "1", "pressure": "115кПа"},
+        "2": {"pulse": "0", "pressure": "121кПа"},
+        "3": {"pulse": "0", "pressure": "123кПа"},
+        "4": {"pulse": "0", "pressure": "133кПа"}
     },
 
-    "4W": {"1": {"pulse": "-2", "pressure": "115кПа", "state": "смущен"}},
-    "4L": {"1": {"pulse": "2", "pressure": "115кПа", "state": "смущен"}},
+    "4W": {"1": {"pulse": "-2", "pressure": "115кПа"}},
+    "4L": {"1": {"pulse": "2", "pressure": "115кПа"}},
 
     "5": {
-        "1": {"pulse": "0", "pressure": "116кПа", "state": "смущен"},
-        "2": {"pulse": "0", "pressure": "122кПа", "state": "обеспокоен"},
-        "3": {"pulse": "1", "pressure": "124кПа", "state": "обеспокоен"},
-        "4": {"pulse": "0", "pressure": "134кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "116кПа"},
+        "2": {"pulse": "0", "pressure": "122кПа"},
+        "3": {"pulse": "1", "pressure": "124кПа"},
+        "4": {"pulse": "0", "pressure": "134кПа"}
     },
 
-    "5W": {"3": {"pulse": "-2", "pressure": "124кПа", "state": "обеспокоен"}},
-    "5L": {"3": {"pulse": "2", "pressure": "124кПа", "state": "обеспокоен"}},
+    "5W": {"3": {"pulse": "-2", "pressure": "124кПа"}},
+    "5L": {"3": {"pulse": "2", "pressure": "124кПа"}},
 
     "6": {
-        "1": {"pulse": "0", "pressure": "117кПа", "state": "смущен"},
-        "2": {"pulse": "0", "pressure": "123кПа", "state": "обеспокоен"},
-        "3": {"pulse": "0", "pressure": "125кПа", "state": "обеспокоен"},
-        "4": {"pulse": "4", "pressure": "135кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "117кПа"},
+        "2": {"pulse": "0", "pressure": "123кПа"},
+        "3": {"pulse": "0", "pressure": "125кПа"},
+        "4": {"pulse": "4", "pressure": "135кПа"}
     },
     "6a": {
-        "4": {"pulse": "4", "pressure": "135кПа", "state": "крайне напряжён"}
+        "4": {"pulse": "4", "pressure": "135кПа"}
     },
 
-    "6W": {"4": {"pulse": "-6", "pressure": "135кПа", "state": "крайне напряжён"}},
-    "6L": {"4": {"pulse": "2", "pressure": "135кПа", "state": "крайне напряжён"}},
+    "6W": {"4": {"pulse": "-6", "pressure": "135кПа"}},
+    "6L": {"4": {"pulse": "2", "pressure": "135кПа"}},
 
     "7": {
-        "1": {"pulse": "0", "pressure": "118кПа", "state": "сосредоточен"},
-        "2": {"pulse": "0", "pressure": "124кПа", "state": "обеспокоен"},
-        "3": {"pulse": "0", "pressure": "126кПа", "state": "сосредоточен"},
-        "4": {"pulse": "0", "pressure": "136кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "118кПа"},
+        "2": {"pulse": "0", "pressure": "124кПа"},
+        "3": {"pulse": "0", "pressure": "126кПа"},
+        "4": {"pulse": "0", "pressure": "136кПа"}
     },
     "7b": {
-        "3": {"pulse": "0", "pressure": "126кПа", "state": "сосредоточен"}
+        "3": {"pulse": "0", "pressure": "126кПа"}
     },
     "8": {
-        "1": {"pulse": "0", "pressure": "118кПа", "state": "сосредоточен"},
-        "2": {"pulse": "0", "pressure": "124кПа", "state": "обеспокоен"},
-        "3": {"pulse": "0", "pressure": "126кПа", "state": "сосредоточен"},
-        "4": {"pulse": "0", "pressure": "136кПа", "state": "напряжён"}
+        "1": {"pulse": "0", "pressure": "118кПа"},
+        "2": {"pulse": "0", "pressure": "124кПа"},
+        "3": {"pulse": "0", "pressure": "126кПа"},
+        "4": {"pulse": "0", "pressure": "136кПа"}
     }
 }
