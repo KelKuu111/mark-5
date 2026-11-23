@@ -3,17 +3,17 @@
         "1": {"pulse": "0", "pressure": "112кПа"},
         "2": {"pulse": "0", "pressure": "118кПа"},
         "3": {"pulse": "0", "pressure": "120кПа"},
-        "4": {"pulse": "0", "pressure": "130кПа"}
+        "4": {"pulse": "0", "pressure": "115кПа"}
     },
     "2": {
         "1": {"pulse": "0", "pressure": "112кПа"},
-        "4": {"pulse": "0", "pressure": "130кПа"}
+        "4": {"pulse": "0", "pressure": "115кПа"}
     },
     "3": {
         "1": {"pulse": "0", "pressure": "114кПа"},
         "2": {"pulse": "1", "pressure": "120кПа"},
         "3": {"pulse": "0", "pressure": "122кПа"},
-        "4": {"pulse": "0", "pressure": "132кПа"}
+        "4": {"pulse": "0", "pressure": "116кПа"}
     },
 
     "3W": {"2": {"pulse": "-2", "pressure": "120кПа"}},
@@ -23,7 +23,7 @@
         "1": {"pulse": "1", "pressure": "115кПа"},
         "2": {"pulse": "0", "pressure": "121кПа"},
         "3": {"pulse": "0", "pressure": "123кПа"},
-        "4": {"pulse": "0", "pressure": "133кПа"}
+        "4": {"pulse": "0", "pressure": "117кПа"}
     },
 
     "4W": {"1": {"pulse": "-2", "pressure": "115кПа"}},
@@ -33,7 +33,7 @@
         "1": {"pulse": "0", "pressure": "116кПа"},
         "2": {"pulse": "0", "pressure": "122кПа"},
         "3": {"pulse": "1", "pressure": "124кПа"},
-        "4": {"pulse": "0", "pressure": "134кПа"}
+        "4": {"pulse": "0", "pressure": "118кПа"}
     },
 
     "5W": {"3": {"pulse": "-2", "pressure": "124кПа"}},
@@ -43,20 +43,20 @@
         "1": {"pulse": "0", "pressure": "117кПа"},
         "2": {"pulse": "0", "pressure": "123кПа"},
         "3": {"pulse": "0", "pressure": "125кПа"},
-        "4": {"pulse": "4", "pressure": "135кПа"}
+        "4": {"pulse": "4", "pressure": "119кПа"}
     },
     "6a": {
-        "4": {"pulse": "4", "pressure": "135кПа"}
+        "4": {"pulse": "4", "pressure": "119кПа"}
     },
 
-    "6W": {"4": {"pulse": "-6", "pressure": "135кПа"}},
-    "6L": {"4": {"pulse": "2", "pressure": "135кПа"}},
+    "6W": {"4": {"pulse": "-6", "pressure": "119кПа"}},
+    "6L": {"4": {"pulse": "2", "pressure": "119кПа"}},
 
     "7": {
         "1": {"pulse": "0", "pressure": "118кПа"},
         "2": {"pulse": "0", "pressure": "124кПа"},
         "3": {"pulse": "0", "pressure": "126кПа"},
-        "4": {"pulse": "0", "pressure": "136кПа"}
+        "4": {"pulse": "0", "pressure": "120кПа"}
     },
     "7b": {
         "3": {"pulse": "0", "pressure": "126кПа"}
@@ -65,6 +65,6 @@
         "1": {"pulse": "0", "pressure": "118кПа"},
         "2": {"pulse": "0", "pressure": "124кПа"},
         "3": {"pulse": "0", "pressure": "126кПа"},
-        "4": {"pulse": "0", "pressure": "136кПа"}
+        "4": {"pulse": "0", "pressure": "120кПа"}
     }
 }

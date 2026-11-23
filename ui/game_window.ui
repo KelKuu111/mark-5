@@ -111,7 +111,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+      <normaloff>textures/Icon-seeho.png</normaloff>textures/Icon-seeho.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -134,7 +134,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+      <normaloff>textures/Icon-tokomoto.png</normaloff>textures/Icon-tokomoto.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -157,7 +157,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+      <normaloff>textures/Icon-eliza.png</normaloff>textures/Icon-eliza.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -180,7 +180,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>textures/Icon.png</normaloff>textures/Icon.png</iconset>
+      <normaloff>textures/Icon-artem.png</normaloff>textures/Icon-artem.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -204,7 +204,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
+     <normaloff>textures/Icon-text-seeho.png</normaloff>textures/Icon-text-seeho.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -227,7 +227,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
+     <normaloff>textures/Icon-text-tokomoto.png</normaloff>textures/Icon-text-tokomoto.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -250,7 +250,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
+     <normaloff>textures/Icon-text-artem.png</normaloff>textures/Icon-text-artem.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -273,7 +273,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>textures/Icon-text.png</normaloff>textures/Icon-text.png</iconset>
+     <normaloff>textures/Icon-text-eliza.png</normaloff>textures/Icon-text-eliza.png</iconset>
    </property>
    <property name="iconSize">
     <size>
