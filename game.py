@@ -19,6 +19,7 @@ with open('json/deep.json', 'r', encoding='utf-8') as f:
     DEEP = json.load(f)
 
 STATES = {'Спокоен': 80, 'Напряжён': 90, 'Встревожен': 110, 'Охвачен паникой': 140, 'Объятый паникой': 150}
+BASE_PRESSURE = {'1': 112, '2': 118, '3': 120, '4': 115}
 
 
 class HumanStatisticWindow(QDialog):
@@ -49,6 +50,7 @@ class GameWindow(QWidget):
         self.stage = "1"
         self.current_human_id = None
         self.pulse = {'1': 73, '2': 68, '3': 80, '4': 90}
+        self.depth = {'1': 0, '2': 0, '3': 0, '4': 0}
         ###########################################
         self.current_stage.setText(self.stage)
         ###########################################
@@ -149,6 +151,7 @@ class GameWindow(QWidget):
             self.update_tasks()
             self.update_deep()
             self.update_pulse()
+            self.update_depth()
             self.refresh_human()
 
             ###########################################
@@ -166,6 +169,7 @@ class GameWindow(QWidget):
             self.update_tasks()
             self.update_deep()
             self.update_pulse()
+            self.update_depth()
             self.refresh_human()
 
         ###########################################
@@ -237,7 +241,7 @@ class GameWindow(QWidget):
                 break
 
         changes = changes.replace('{pulse}', str(self.pulse[char_id]))
-        changes = changes.replace('{pressure}', health.get("pressure", "-"))
+        changes = changes.replace('{pressure}', f"{self.get_pressure(char_id)}кПа")
         self.statistic_window.health.setText(changes)
 
     def refresh_human(self):
@@ -270,3 +274,11 @@ class GameWindow(QWidget):
             x, y, w, h = g.x(), g.y(), g.width(), g.height()
             y = 120 + current_deep[idx] // 2
             current.setGeometry(x, y, w, h)
+
+    def get_pressure(self, char_id):
+        return BASE_PRESSURE[char_id] + self.depth[char_id] // 25
+
+    def update_depth(self):
+        current = DEEP.get(self.stage, {})
+        for char_id, d in current.items():
+            self.depth[char_id] = d
