@@ -486,6 +486,22 @@
     <pixmap>textures/dot-4.png</pixmap>
    </property>
   </widget>
+  <widget class="QLabel" name="deep_5">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>120</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>textures/dot-5.png</pixmap>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

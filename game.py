@@ -19,7 +19,7 @@ with open('json/deep.json', 'r', encoding='utf-8') as f:
     DEEP = json.load(f)
 
 STATES = {'Спокоен': 80, 'Напряжён': 90, 'Встревожен': 110, 'Охвачен паникой': 140, 'Объятый паникой': 150}
-BASE_PRESSURE = {'1': 112, '2': 118, '3': 120, '4': 115}
+BASE_PRESSURE = {'1': 114, '2': 118, '3': 120, '4': 115}
 
 
 class HumanStatisticWindow(QDialog):
@@ -46,11 +46,12 @@ class GameWindow(QWidget):
         uic.loadUi('ui/game_window.ui', self)
         print('Игра запущена!')
 
+        self._done_events = set()
         self.player_name = player_name
         self.stage = "1"
         self.current_human_id = None
         self.pulse = {'1': 73, '2': 68, '3': 80, '4': 90}
-        self.depth = {'1': 0, '2': 0, '3': 0, '4': 0}
+        self.depth = {'1': 0, '2': 0, '3': 0, '4': 0, '5': 0}
         ###########################################
         self.current_stage.setText(self.stage)
         ###########################################
@@ -62,6 +63,8 @@ class GameWindow(QWidget):
         self.info_window = InfoWindow(self)
 
         self.btn_deep.clicked.connect(self.deep)
+
+        self.deep_5.setVisible(False)
 
         self.btn_human_1.clicked.connect(self.human)
         self.btn_human_2.clicked.connect(self.human)
@@ -161,6 +164,8 @@ class GameWindow(QWidget):
             if REPLICAS.get(self.stage, {}).get("SKIP"):
                 return self.update_stage(REPLICAS[self.stage]["SKIP"])
 
+            self.run_stage_event()
+
             return
         if not any_visible:
             self.stage = str(int(self.stage) + 1)
@@ -178,6 +183,8 @@ class GameWindow(QWidget):
 
         if REPLICAS.get(self.stage, {}).get("SKIP"):
             return self.update_stage()
+
+        self.run_stage_event()
 
     def on_choice(self):
         self.text_window.btn_ans_1.setVisible(False)
@@ -261,7 +268,7 @@ class GameWindow(QWidget):
 
     def update_tasks(self):
         task = TASKS.get(self.stage, {})
-        self.current_tasks_label.setText('\n'.join(task.get("tasks", "-")))
+        self.current_tasks_label.setText('\n> '.join(task.get("tasks", "-")))
 
     def update_deep(self):
         current_deep = DEEP.get(self.stage, None)
@@ -282,3 +289,20 @@ class GameWindow(QWidget):
         current = DEEP.get(self.stage, {})
         for char_id, d in current.items():
             self.depth[char_id] = d
+
+    def run_stage_event(self):
+        if self.stage in self._done_events:
+            return
+        self._done_events.add(self.stage)
+
+        event = getattr(self, f'event_stage_{self.stage}', None)
+        if event is not None:
+            event()
+
+    # <><><><><><> EVENTS <><><><><><>
+
+    def event_stage_12(self):
+        self.deep_5.setVisible(True)
+
+    def event_stage_14(self):
+        self.deep_5.setVisible(False)
