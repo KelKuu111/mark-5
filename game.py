@@ -1,6 +1,8 @@
 import json
 from PyQt6 import uic
 from PyQt6.QtWidgets import QWidget, QDialog, QMessageBox
+from PyQt6.QtMultimedia import QSoundEffect
+from PyQt6.QtCore import QUrl
 
 
 with open('json/replicas.json', 'r', encoding='utf-8') as f:
@@ -61,6 +63,20 @@ class GameWindow(QWidget):
         self.statistic_window = HumanStatisticWindow(self)
         self.text_window = TextWindow(self)
         self.info_window = InfoWindow(self)
+
+        self.click_sound = QSoundEffect()
+        self.click_sound.setSource(QUrl.fromLocalFile("click.wav"))
+        self.click_sound.setVolume(0.5)
+
+        self.show_btn_sound = QSoundEffect()
+        self.show_btn_sound.setSource(QUrl.fromLocalFile("alert.wav"))
+        self.show_btn_sound.setVolume(0.3)
+
+        self.bg_sound = QSoundEffect()
+        self.bg_sound.setSource(QUrl.fromLocalFile("background.wav"))
+        self.bg_sound.setVolume(0.05)
+        self.bg_sound.setLoopCount(-1)
+        self.bg_sound.play()
 
         self.btn_deep.clicked.connect(self.deep)
 
@@ -198,6 +214,10 @@ class GameWindow(QWidget):
 
     def show_buttons_for_stage(self):
         stage_data = REPLICAS.get(self.stage, {})
+
+        if stage_data.get('SKIP', None) is None:
+            self.show_btn_sound.play()
+
         for i in range(1, 5):
             btn = getattr(self, f"btn_text_{i}")
             btn.setVisible(str(i) in stage_data)
@@ -214,6 +234,8 @@ class GameWindow(QWidget):
         self.info_window.activateWindow()
 
     def human(self):
+        self.click_sound.play()
+
         char_id = self.sender().objectName()[-1]
         self.current_human_id = char_id
 
